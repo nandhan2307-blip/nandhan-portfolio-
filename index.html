@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Nandhan S S — Software Developer, UI/UX Designer, Cybersecurity Analyst and Editor.">
+  <title>Nandhan S S — Thinking Beyond Syntax</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#080a0f; --panel:#0e121a; --panel2:#121823; --text:#f5f7fb;
+      --muted:#9ca7b8; --line:rgba(255,255,255,.10); --accent:#8cffc1;
+      --accent2:#72a8ff; --max:1180px; --radius:28px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:radial-gradient(circle at 70% 0%,#152036 0,#080a0f 38%);color:var(--text);font-family:Manrope,system-ui,sans-serif;overflow-x:hidden}
+    body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.035;background-image:linear-gradient(rgba(255,255,255,.7) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.7) 1px,transparent 1px);background-size:70px 70px;mask-image:linear-gradient(to bottom,black,transparent 75%);z-index:0}
+    a{color:inherit;text-decoration:none}
+    .progress{position:fixed;top:0;left:0;height:2px;width:100%;transform-origin:left;background:linear-gradient(90deg,var(--accent),var(--accent2));z-index:100}
+    nav{position:fixed;top:18px;left:50%;transform:translateX(-50%);width:min(calc(100% - 32px),900px);z-index:90;padding:10px 14px;border:1px solid var(--line);background:rgba(8,10,15,.62);backdrop-filter:blur(18px);border-radius:999px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 20px 60px rgba(0,0,0,.2)}
+    nav .brand{font-weight:800;letter-spacing:-.03em}
+    nav .links{display:flex;gap:8px}
+    nav .links a{font-size:12px;color:var(--muted);padding:8px 10px;border-radius:999px}
+    nav .links a:hover{color:var(--text);background:rgba(255,255,255,.06)}
+    .resume{border:1px solid rgba(140,255,193,.35);color:var(--accent)!important}
+    main{position:relative;z-index:1}
+    section{width:min(calc(100% - 40px),var(--max));margin:auto}
+    .hero{min-height:100svh;display:grid;place-items:center;padding-top:70px;position:relative}
+    .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center;width:100%}
+    .eyebrow{font:500 12px "DM Mono",monospace;text-transform:uppercase;letter-spacing:.18em;color:var(--accent);display:flex;align-items:center;gap:10px}
+    .eyebrow:before{content:"";width:34px;height:1px;background:currentColor}
+    h1{font-size:clamp(58px,9vw,122px);line-height:.86;letter-spacing:-.075em;margin:22px 0}
+    h1 span{display:block;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.28)}
+    .hero-copy{font-size:18px;line-height:1.7;color:var(--muted);max-width:650px}
+    .hero-actions{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:13px 17px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.04);font-weight:700;font-size:13px}
+    .btn.primary{background:var(--text);color:#090b10;border-color:var(--text)}
+    .btn:hover{transform:translateY(-2px)}
+    .hero-art{min-height:560px;position:relative;display:grid;place-items:center}
+    .orb{position:absolute;width:390px;height:390px;border-radius:50%;background:radial-gradient(circle,#273d5d 0%,rgba(114,168,255,.17) 30%,transparent 70%);filter:blur(2px);animation:float 7s ease-in-out infinite}
+    .photo-wrap{width:min(430px,88%);aspect-ratio:4/5;position:relative;border-radius:42% 42% 24px 24px;overflow:hidden;border:1px solid rgba(255,255,255,.15);background:linear-gradient(145deg,rgba(255,255,255,.10),rgba(255,255,255,.02));box-shadow:0 40px 120px rgba(0,0,0,.45);transform:translateZ(0);animation:float 6s ease-in-out infinite}
+    .photo-wrap:before{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 20%,rgba(255,255,255,.15) 45%,transparent 60%);transform:translateX(-120%);animation:sweep 5s infinite}
+    .photo-wrap:after{content:"";position:absolute;inset:10px;border:1px solid rgba(140,255,193,.2);border-radius:38% 38% 18px 18px;pointer-events:none}
+    .photo{width:100%;height:100%;object-fit:cover;object-position:center top;filter:saturate(.9) contrast(1.04);transform:scale(1.03)}
+    .code-float{position:absolute;font:500 11px "DM Mono",monospace;color:var(--accent);background:rgba(8,10,15,.72);border:1px solid rgba(140,255,193,.22);padding:10px 12px;border-radius:12px;backdrop-filter:blur(12px);box-shadow:0 18px 50px rgba(0,0,0,.25);animation:float 5s ease-in-out infinite}
+    .c1{top:12%;left:2%}.c2{right:1%;top:28%;animation-delay:1s}.c3{left:5%;bottom:13%;animation-delay:2s}
+    .scroll-cue{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);font:500 10px "DM Mono",monospace;color:#667185;letter-spacing:.18em;text-transform:uppercase}
+    .scroll-cue:after{content:"";display:block;width:1px;height:42px;background:linear-gradient(var(--accent),transparent);margin:9px auto 0}
+    .story{padding:140px 0}
+    .section-head{display:flex;justify-content:space-between;gap:30px;align-items:end;margin-bottom:45px}
+    .section-head h2{font-size:clamp(42px,6vw,76px);letter-spacing:-.065em;line-height:.92;margin:10px 0 0}
+    .section-head p{max-width:420px;color:var(--muted);line-height:1.7}
+    .stage{min-height:78vh;border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.015));overflow:hidden;position:relative;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:70px}
+    .stage-copy{position:relative;z-index:2}.stage-number{font:500 11px "DM Mono",monospace;color:var(--accent);letter-spacing:.16em}
+    .stage h3{font-size:clamp(42px,5vw,68px);letter-spacing:-.06em;line-height:.95;margin:15px 0}
+    .stage p{color:var(--muted);line-height:1.75;max-width:470px}
+    .visual{height:460px;position:relative;display:grid;place-items:center}
+    .desk{width:360px;height:210px;border:1px solid rgba(255,255,255,.16);border-radius:18px;background:#090c12;box-shadow:0 30px 70px rgba(0,0,0,.35);position:relative}
+    .desk:before{content:"";position:absolute;inset:15px;border-radius:10px;background:radial-gradient(circle at 50% 55%,rgba(114,168,255,.35),transparent 55%),#0c111a;border:1px solid rgba(255,255,255,.08)}
+    .desk:after{content:"";position:absolute;bottom:-20px;left:35%;width:30%;height:4px;border-radius:99px;background:#3a4352}
+    .typing{position:absolute;z-index:2;left:38px;top:42px;color:var(--accent);font:500 12px "DM Mono",monospace;line-height:1.7}
+    .book{width:160px;height:110px;border:1px solid var(--line);background:#151b25;position:absolute;bottom:65px;left:20px;border-radius:8px;transform:rotate(-10deg);box-shadow:0 25px 50px rgba(0,0,0,.25)}
+    .book:before{content:"LEARN";position:absolute;inset:20px;color:#6e7b8f;font:700 18px "DM Mono",monospace}
+    .mini-person{position:absolute;bottom:58px;right:40px;width:95px;height:170px}
+    .mini-person .head{width:48px;height:48px;border-radius:50%;background:#b77a63;margin:auto;position:relative;z-index:2}
+    .mini-person .hair{position:absolute;top:-4px;left:6px;width:38px;height:22px;border-radius:50% 50% 35% 35%;background:#14151a;z-index:3}
+    .mini-person .body{width:74px;height:105px;background:#252b36;border-radius:24px 24px 10px 10px;margin:0 auto}
+    .mini-person .arm{position:absolute;width:18px;height:78px;background:#b77a63;border-radius:20px;top:72px}
+    .mini-person .a1{left:2px;transform:rotate(22deg)}.mini-person .a2{right:2px;transform:rotate(-22deg)}
+    .orbit{position:absolute;width:430px;height:430px;border:1px dashed rgba(140,255,193,.18);border-radius:50%;animation:spin 18s linear infinite}
+    .orbit:before,.orbit:after{content:"";position:absolute;width:7px;height:7px;background:var(--accent);border-radius:50%;box-shadow:0 0 20px var(--accent)}
+    .orbit:before{top:15%;left:5%}.orbit:after{right:8%;bottom:17%}
+    .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    .project{min-height:330px;border:1px solid var(--line);border-radius:24px;background:linear-gradient(145deg,#10151f,#0a0d13);padding:26px;position:relative;overflow:hidden;transition:transform .45s ease,border-color .45s ease}
+    .project:hover{transform:translateY(-8px) rotateX(2deg);border-color:rgba(140,255,193,.32)}
+    .project .tag{font:500 10px "DM Mono",monospace;color:var(--accent);text-transform:uppercase;letter-spacing:.15em}
+    .project h3{font-size:30px;letter-spacing:-.05em;margin:22px 0 12px}
+    .project p{color:var(--muted);line-height:1.65;font-size:14px}
+    .stack{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px}
+    .pill{font:500 10px "DM Mono",monospace;border:1px solid var(--line);border-radius:999px;padding:6px 8px;color:#b7c0ce}
+    .project a{position:absolute;bottom:22px;right:22px;font-size:12px;color:var(--accent)}
+    .skill-cloud{display:flex;flex-wrap:wrap;gap:10px;max-width:1000px}
+    .skill{font-size:13px;padding:12px 14px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.035);transition:.3s}
+    .skill:hover{border-color:rgba(140,255,193,.4);transform:translateY(-3px)}
+    .experience{display:grid;gap:14px}
+    .exp{display:grid;grid-template-columns:180px 1fr;gap:30px;padding:26px 0;border-top:1px solid var(--line)}
+    .exp small{font:500 11px "DM Mono",monospace;color:#718096}
+    .exp h3{margin:0 0 7px;font-size:24px}.exp p{margin:0;color:var(--muted);line-height:1.7}
+    .cert-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .cert{display:grid;grid-template-columns:52px 1fr auto;gap:15px;align-items:center;padding:18px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.03);transition:.35s}
+    .cert:hover{transform:translateY(-4px);border-color:rgba(140,255,193,.3);background:rgba(140,255,193,.035)}
+    .cert-icon{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(145deg,#182333,#0b1017);border:1px solid rgba(255,255,255,.08);font:700 12px "DM Mono",monospace;color:var(--accent)}
+    .cert h3{margin:0 0 4px;font-size:15px;letter-spacing:-.02em}
+    .cert p{margin:0;color:#7f8b9d;font-size:12px;line-height:1.5}
+    .cert-year{font:500 10px "DM Mono",monospace;color:#687487;white-space:nowrap}
+
+    .contact{min-height:78vh;display:grid;place-items:center;text-align:center;padding:100px 0}
+    .contact h2{font-size:clamp(54px,9vw,120px);letter-spacing:-.075em;line-height:.86;margin:15px 0 28px}
+    .contact p{color:var(--muted);max-width:560px;margin:auto;line-height:1.7}
+    .contact-links{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:30px}
+    footer{width:min(calc(100% - 40px),var(--max));margin:auto;border-top:1px solid var(--line);padding:22px 0 35px;color:#667185;font-size:12px;display:flex;justify-content:space-between;gap:20px}
+    .reveal{opacity:0;transform:translateY(35px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+    .reveal.in{opacity:1;transform:none}
+    [data-parallax]{will-change:transform}
+    @keyframes float{50%{transform:translateY(-14px)}} @keyframes sweep{65%,100%{transform:translateX(130%)}} @keyframes spin{to{transform:rotate(360deg)}}
+    @media(max-width:820px){
+      nav .links a:not(.resume){display:none}
+      .hero-grid,.stage{grid-template-columns:1fr}
+      .hero{padding-top:110px}.hero-art{min-height:470px}.stage{padding:32px;min-height:auto}.visual{height:390px}.cards{grid-template-columns:1fr}.cert-grid{grid-template-columns:1fr}.cert{grid-template-columns:48px 1fr}.cert-year{display:none}
+      .exp{grid-template-columns:1fr;gap:8px}.section-head{display:block}.section-head p{margin-top:20px}
+    }
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.001ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.001ms!important}}
+  </style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<nav>
+  <a class="brand" href="#top">NANDHAN<span style="color:var(--accent)">.</span></a>
+  <div class="links">
+    <a href="#story">Journey</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#certifications">Certifications</a><a href="#contact">Contact</a>
+    <a class="resume" href="Nandhan-S-S-Resume.pdf" target="_blank">Resume ↗</a>
+  </div>
+</nav>
+
+<main id="top">
+  <section class="hero">
+    <div class="hero-grid">
+      <div class="reveal">
+        <div class="eyebrow">Computer Science · Coimbatore</div>
+        <h1>Nandhan<br><span>S S</span></h1>
+        <p class="hero-copy">Software developer, UI/UX designer, cybersecurity learner and visual storyteller. I like to learn deeply, build practically, secure thoughtfully, and turn ideas into experiences that feel alive.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#projects">Explore my work ↓</a>
+          <a class="btn" href="mailto:nandhan2307@gmail.com">Let's connect ↗</a>
+        </div>
+      </div>
+      <div class="hero-art reveal" data-parallax="0.12">
+        <div class="orb"></div>
+        <div class="photo-wrap">
+          <img class="photo" src="assets/nandhan-photo.png" alt="Portrait of Nandhan S S">
+        </div>
+        <div class="code-float c1">&lt;build /&gt;</div>
+        <div class="code-float c2">security.mindset()</div>
+        <div class="code-float c3">edit → design → ship</div>
+      </div>
+    </div>
+    <div class="scroll-cue">scroll to begin</div>
+  </section>
+
+  <section class="story" id="story">
+    <div class="section-head reveal">
+      <div><div class="eyebrow">01 · The journey</div><h2>From learning<br>to building.</h2></div>
+      <p>A scroll-driven story of how curiosity becomes code, interfaces, experiments, and shipped work.</p>
+    </div>
+
+    <div class="stage reveal">
+      <div class="stage-copy">
+        <div class="stage-number">STAGE 01 / LEARN</div>
+        <h3>Start with<br>curiosity.</h3>
+        <p>It starts with questions: how does this work, how can it be better, and what happens if I build it myself? Computer Science became the playground for those questions.</p>
+      </div>
+      <div class="visual">
+        <div class="orbit"></div><div class="book"></div>
+        <div class="mini-person"><div class="hair"></div><div class="head"></div><div class="body"></div><div class="arm a1"></div><div class="arm a2"></div></div>
+      </div>
+    </div>
+
+    <div class="stage reveal" style="margin-top:24px">
+      <div class="visual" data-parallax="-0.08">
+        <div class="desk"><div class="typing">const idea = curiosity;<br>build(idea);<br>secure(idea);<br>ship(idea);</div></div>
+        <div class="mini-person" style="right:5px"><div class="hair"></div><div class="head"></div><div class="body"></div><div class="arm a1"></div><div class="arm a2"></div></div>
+      </div>
+      <div class="stage-copy">
+        <div class="stage-number">STAGE 02 / BUILD</div>
+        <h3>Turn ideas<br>into systems.</h3>
+        <p>Python, web development, AI tools, computer vision and cybersecurity became practical ways to experiment. The goal: useful software, not just syntax.</p>
+      </div>
+    </div>
+
+    <div class="stage reveal" style="margin-top:24px">
+      <div class="stage-copy">
+        <div class="stage-number">STAGE 03 / CREATE</div>
+        <h3>Make it<br>feel human.</h3>
+        <p>UI/UX and visual storytelling sit alongside engineering. I care about the interface, the motion, the clarity, and the story a product tells while someone is using it.</p>
+      </div>
+      <div class="visual">
+        <div class="orbit" style="animation-direction:reverse"></div>
+        <div style="width:280px;height:360px;border:1px solid var(--line);border-radius:26px;background:linear-gradient(150deg,#172131,#0c1018);box-shadow:0 35px 80px #0006;transform:rotate(-6deg);padding:20px;position:relative">
+          <div style="height:8px;width:55%;border-radius:99px;background:#3c4859;margin-bottom:24px"></div>
+          <div style="height:130px;border-radius:18px;background:linear-gradient(135deg,#213b57,#111925);border:1px solid #ffffff12"></div>
+          <div style="display:flex;gap:8px;margin-top:14px"><div style="height:60px;flex:1;border-radius:12px;background:#ffffff08"></div><div style="height:60px;flex:1;border-radius:12px;background:#8cffc11c"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="story">
+    <div class="section-head reveal">
+      <div><div class="eyebrow">02 · Selected work</div><h2>Built to<br>explore.</h2></div>
+      <p>Projects spanning multimodal AI, healthcare, tournament tooling, and a college information hub.</p>
+    </div>
+    <div class="cards">
+      <article class="project reveal">
+        <div class="tag">01 · Multimodal AI</div><h3>NandVision</h3>
+        <p>Multimodal AI intelligence workspace for image understanding, object detection, OCR, document intelligence and RAG-based question answering.</p>
+        <div class="stack"><span class="pill">Python</span><span class="pill">Streamlit</span><span class="pill">PyTorch</span><span class="pill">SmolVLM</span><span class="pill">YOLO</span><span class="pill">FAISS</span></div>
+        <a href="https://github.com/nandhan2307-blip/NandVision" target="_blank">GitHub ↗</a>
+      </article>
+      <article class="project reveal">
+        <div class="tag">02 · Healthcare</div><h3>Health Team 284</h3>
+        <p>The Conquerors — a healthcare-focused project developed through the Build with AI / Code for Communities initiative. Repository details were not publicly verifiable from the supplied link, so the portfolio avoids inventing a stack or feature list.</p>
+        <div class="stack"><span class="pill">The Conquerors</span><span class="pill">Healthcare</span><span class="pill">Build with AI</span></div>
+        <a href="https://github.com/Build-with-AI-Code-for-Communities/health-team-284-the-conquerors" target="_blank">Repository ↗</a>
+      </article>
+      <article class="project reveal">
+        <div class="tag">03 · Web application</div><h3>Chess Tournament Web</h3>
+        <p>Browser-based tournament manager for an 8-player chess tournament, covering fixtures, results, standings, rankings, semi-finals, finals and third-place matches.</p>
+        <div class="stack"><span class="pill">HTML</span><span class="pill">CSS</span><span class="pill">JavaScript</span><span class="pill">Local Storage</span></div>
+        <a href="https://github.com/nandhan2307-blip/chess-torunament-web" target="_blank">GitHub ↗</a>
+      </article>
+      <article class="project reveal">
+        <div class="tag">04 · College platform</div><h3>NandConnects</h3>
+        <p>A college hub bringing events, clubs, announcements, notices, contact information, login and other student-facing resources into one digital space.</p>
+        <div class="stack"><span class="pill">HTML</span><span class="pill">CSS</span><span class="pill">JavaScript</span><span class="pill">UI/UX</span></div>
+        <a href="https://github.com/nandhan2307-blip/nandconnects" target="_blank">GitHub ↗</a>
+      </article>
+    </div>
+  </section>
+
+  <section id="skills" class="story">
+    <div class="section-head reveal">
+      <div><div class="eyebrow">03 · Toolkit</div><h2>Curious by<br>default.</h2></div>
+      <p>A focused set of technical, creative and professional capabilities, consolidated from the supplied resume and skill list.</p>
+    </div>
+    <div class="skill-cloud reveal">
+      <span class="skill">Python</span><span class="skill">C / C++</span><span class="skill">HTML / CSS / JS</span><span class="skill">Flutter</span>
+      <span class="skill">Computer Vision</span><span class="skill">OpenCV</span><span class="skill">Object Detection</span><span class="skill">YOLO</span>
+      <span class="skill">VLMs</span><span class="skill">NLP</span><span class="skill">PyTorch</span><span class="skill">Transformers</span>
+      <span class="skill">RAG</span><span class="skill">FAISS</span><span class="skill">Prompt Engineering</span><span class="skill">AI-assisted Development</span>
+      <span class="skill">Cybersecurity</span><span class="skill">Wireshark</span><span class="skill">Kali Linux</span><span class="skill">TCP/IP</span>
+      <span class="skill">OSINT</span><span class="skill">Reconnaissance</span><span class="skill">Vulnerability Assessment</span><span class="skill">VirtualBox</span>
+      <span class="skill">Apache</span><span class="skill">Shodan</span><span class="skill">VirusTotal</span><span class="skill">WHOIS</span>
+      <span class="skill">Git</span><span class="skill">GitHub</span><span class="skill">Vercel</span><span class="skill">Firebase</span><span class="skill">Supabase</span><span class="skill">AWS</span>
+      <span class="skill">Figma</span><span class="skill">Canva</span><span class="skill">Adobe Premiere Pro</span><span class="skill">After Effects · beginner</span>
+      <span class="skill">DaVinci Resolve · beginner</span><span class="skill">CapCut · advanced</span><span class="skill">Motion Graphics</span>
+      <span class="skill">Visual Storytelling</span><span class="skill">Rapid Prototyping</span><span class="skill">Leadership</span><span class="skill">Communication</span>
+    </div>
+  </section>
+
+  <section class="story">
+    <div class="section-head reveal">
+      <div><div class="eyebrow">04 · Experience</div><h2>Learned by<br>doing.</h2></div>
+    </div>
+    <div class="experience">
+      <div class="exp reveal"><small>SEP 2026 — PRESENT</small><div><h3>Department Secretary · CSE</h3><p>PPG Institute of Technology · Coimbatore. Elected to represent and support CSE student interests, coordinate with students and faculty, and contribute to department activities and initiatives.</p></div></div>
+      <div class="exp reveal"><small>DEC 2025 · 1 MONTH</small><div><h3>Cybersecurity Intern</h3><p>Prompt Infotech · Coimbatore. Practical exposure to network security, ethical hacking fundamentals, virtualization, secure web-server deployment, traffic analysis, OSINT, reconnaissance, vulnerability assessment and email-security validation.</p></div></div>
+    </div>
+  </section>
+
+  <section id="certifications" class="story">
+    <div class="section-head reveal">
+      <div><div class="eyebrow">04 · Certifications</div><h2>Learning<br>in public.</h2></div>
+      <p>Professional development across AI engineering, cybersecurity, data, deep learning, cloud, UX and career skills.</p>
+    </div>
+    <div class="cert-grid">
+      <article class="cert reveal"><div class="cert-icon">ANT</div><div><h3>Claude Code in Action</h3><p>Anthropic</p></div><span class="cert-year">JUN 2026</span></article>
+      <article class="cert reveal"><div class="cert-icon">ANT</div><div><h3>Introduction to Claude Cowork</h3><p>Anthropic</p></div><span class="cert-year">JUN 2026</span></article>
+      <article class="cert reveal"><div class="cert-icon">ANT</div><div><h3>Claude Code 101</h3><p>Anthropic</p></div><span class="cert-year">MAY 2026</span></article>
+      <article class="cert reveal"><div class="cert-icon">ANT</div><div><h3>Claude 101</h3><p>Anthropic</p></div><span class="cert-year">MAY 2026</span></article>
+      <article class="cert reveal"><div class="cert-icon">CEL</div><div><h3>Process Mining Audit Professional</h3><p>Celonis</p></div><span class="cert-year">APR 2026</span></article>
+      <article class="cert reveal"><div class="cert-icon">INF</div><div><h3>Data Science</h3><p>Infosys Springboard</p></div><span class="cert-year">APR 2026</span></article>
+      <article class="cert reveal"><div class="cert-icon">NVD</div><div><h3>Fundamentals of Deep Learning</h3><p>NVIDIA Deep Learning Institute</p></div><span class="cert-year">APR 2026</span></article>
+      <article class="cert reveal"><div class="cert-icon">BCG</div><div><h3>GenAI Job Simulation</h3><p>Forage / BCG X</p></div><span class="cert-year">MAR 2026</span></article>
+      <article class="cert reveal"><div class="cert-icon">TCS</div><div><h3>Career Edge – Young Professional</h3><p>TCS iON</p></div><span class="cert-year">FEB 2026</span></article>
+      <article class="cert reveal"><div class="cert-icon">TAT</div><div><h3>CyberSecurity Analyst Job Simulation</h3><p>Forage / Tata</p></div><span class="cert-year">FEB 2026</span></article>
+      <article class="cert reveal"><div class="cert-icon">HPL</div><div><h3>Critical Thinking in the AI Era</h3><p>HP LIFE</p></div><span class="cert-year">FEB 2026</span></article>
+      <article class="cert reveal"><div class="cert-icon">GL</div><div><h3>Prompt Engineering for ChatGPT</h3><p>Great Learning</p></div><span class="cert-year">—</span></article>
+      <article class="cert reveal"><div class="cert-icon">AWS</div><div><h3>Cloud Practitioner Essentials</h3><p>Amazon Web Services</p></div><span class="cert-year">—</span></article>
+      <article class="cert reveal"><div class="cert-icon">FUT</div><div><h3>User Experience</h3><p>Accenture / FutureLearn</p></div><span class="cert-year">—</span></article>
+      <article class="cert reveal"><div class="cert-icon">EY</div><div><h3>AI Skills Passport</h3><p>EY & Microsoft</p></div><span class="cert-year">—</span></article>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="reveal">
+      <div class="eyebrow" style="justify-content:center">05 · Let's build</div>
+      <h2>Think beyond<br><span style="color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.25)">syntax.</span></h2>
+      <p>Have an idea, a product to prototype, a security problem to explore, or a story to edit? Let's turn the next idea into something real.</p>
+      <div class="contact-links">
+        <a class="btn primary" href="mailto:nandhan2307@gmail.com">nandhan2307@gmail.com</a>
+        <a class="btn" href="tel:+919025572497">+91 90255 72947</a>
+        <a class="btn" href="https://www.linkedin.com/in/nandhan-ss-b769083a2/" target="_blank">LinkedIn</a>
+        <a class="btn" href="https://github.com/nandhan2307-blip" target="_blank">GitHub</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><span>© 2026 Nandhan S S</span><span>Thinking Beyond Syntax · Built with curiosity</span></footer>
+
+<script>
+  const progress=document.getElementById('progress');
+  const update=()=>{const h=document.documentElement.scrollHeight-innerHeight;progress.style.transform=`scaleX(${h?scrollY/h:0})`};
+  addEventListener('scroll',update,{passive:true}); update();
+
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  document.querySelectorAll('[data-parallax]').forEach(el=>{
+    const strength=parseFloat(el.dataset.parallax)||.08;
+    addEventListener('scroll',()=>{
+      const r=el.getBoundingClientRect(), center=innerHeight/2;
+      const d=(r.top+r.height/2-center)*strength;
+      el.style.transform=`translate3d(0,${-d}px,0)`;
+    },{passive:true});
+  });
+</script>
+</body>
+</html>
